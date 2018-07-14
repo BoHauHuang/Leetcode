@@ -1,4 +1,4 @@
-// solved by brute force  84ms
+// solved by brute force  152ms
 int* twoSum(int* nums, int numsSize, int target) {
 	static int ans[2];
     int i = 0,j;
@@ -7,7 +7,7 @@ int* twoSum(int* nums, int numsSize, int target) {
             if(nums[i]+nums[j] == target){
                 ans[0] = i;
                 ans[1] = j;
-                return two;
+                return ans;
             }
         }
     }
