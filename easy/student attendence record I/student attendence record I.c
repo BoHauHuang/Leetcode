@@ -1,3 +1,5 @@
+// AC: 0 ms
+
 bool checkRecord(char* s) {
     int absent = 0;
     int continuous_late = 0;
