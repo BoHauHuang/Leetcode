@@ -9,13 +9,14 @@ public:
         
         while(cnt < points.size()){
             vis[cur] = 1;
+            while(q.size() && vis[q.top().second]) q.pop();
             for(int i = 0 ; i < n ; i++){
                 if(vis[i] == 0){
                     int len = abs(points[i][0]-points[cur][0])+abs(points[i][1]-points[cur][1]);
                     q.push(make_pair(-len, i));
                 }
             }
-            while(vis[q.top().second]) q.pop();
+            
             ans -= q.top().first;
             cur = q.top().second;
             cnt++;
