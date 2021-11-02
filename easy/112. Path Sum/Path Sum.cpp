@@ -12,19 +12,21 @@
 class Solution {
 public:
     bool ans = false;
-    void dfs(TreeNode* root, int sum, int targetSum){
+    
+    void dfs(TreeNode* root, int targetSum, int sum){
         if(!root) return;
         
         sum += root->val;
-        if(targetSum == sum && !root->left && !root->right) ans = true;
-        if(!root->left) dfs(root->right, sum, targetSum);
-        if(!root->right) dfs(root->left, sum, targetSum);
+        if(targetSum == sum && root->left == nullptr && root->right == nullptr) ans = true;
         
-        dfs(root->left, sum, targetSum);
-        dfs(root->right, sum, targetSum);
+        if(root->right) dfs(root->right, targetSum, sum);
+        if(root->left) dfs(root->left, targetSum, sum);
     }
+    
     bool hasPathSum(TreeNode* root, int targetSum) {
-        dfs(root, 0, targetSum);
+        if(!root) return ans;
+        
+        dfs(root, targetSum, 0);
         return ans;
     }
 };
